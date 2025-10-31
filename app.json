@@ -1,0 +1,26 @@
+{
+  "expo": {
+    "name": "Aether Mobile",
+    "slug": "aether-mobile",
+    "scheme": "aether",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "package": "com.aether.mobile"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ec670257-abba-4e64-a737-71e6e6581ab1"
+      }
+    }
+  }
+}
