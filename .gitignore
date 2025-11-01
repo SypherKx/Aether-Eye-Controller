@@ -1,0 +1,41 @@
+node_modules/
+
+# Expo/Metro
+.expo/
+.expo-shared/
+.expo-packager-cache/
+.expo/web-build/
+.expo/cache/
+.expo/updates/
+.packager/
+
+# Build outputs
+build/
+dist/
+web-build/
+
+# OS/Editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Android/iOS native (if generated locally)
+android/
+ios/
+
+# Misc
+*.keystore
+*.jks
+*.p8
+*.p12
+*.key
+*.mobileprovision
+
+# TypeScript
+*.tsbuildinfo
