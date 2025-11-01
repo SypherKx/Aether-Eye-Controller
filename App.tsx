@@ -40,8 +40,11 @@ export default function App() {
       if (data.ok) {
         setConnected(true);
         // open websocket
-        const ws = new WebSocket(`${baseUrl.replace('http', 'ws')}/ws`);
-        ws.onopen = () => {};
+        const wsUrl = baseUrl.replace(/^http/, 'ws') + '/ws';
+        const ws = new WebSocket(wsUrl);
+        ws.onopen = () => {
+          console.log('WebSocket connected');
+        };
         ws.onmessage = (ev) => {
           try {
             const msg = JSON.parse(ev.data);
@@ -57,16 +60,24 @@ export default function App() {
             } else if (msg.type === 'motion') {
               // Optional: show transient motion message
             }
-          } catch {}
+          } catch (e) {
+            console.warn('Failed to parse WebSocket message:', e);
+          }
         };
-        ws.onclose = () => {};
-        ws.onerror = () => {};
+        ws.onclose = () => {
+          console.log('WebSocket closed');
+          wsRef.current = null;
+        };
+        ws.onerror = (error) => {
+          console.error('WebSocket error:', error);
+          setConnected(false);
+        };
         wsRef.current = ws;
       }
     } catch (e) {
       setConnected(false);
     }
-  }, [baseUrl, esp32Ip]);
+  }, [baseUrl, esp32Ip, speak]);
 
   const setFlash = useCallback(async (mode: 'auto' | 'on' | 'off') => {
     if (!baseUrl) return;
@@ -110,7 +121,10 @@ export default function App() {
 
   useEffect(() => {
     return () => {
-      if (wsRef.current) wsRef.current.close();
+      if (wsRef.current) {
+        wsRef.current.close();
+        wsRef.current = null;
+      }
     };
   }, []);
 

@@ -5,6 +5,12 @@
     "scheme": "aether",
     "version": "1.0.0",
     "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#0b0f14"
+    },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
@@ -15,7 +21,16 @@
       "supportsTablet": true
     },
     "android": {
-      "package": "com.aether.mobile"
+      "package": "com.aether.mobile",
+      "versionCode": 1,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      },
+      "permissions": [
+        "INTERNET"
+      ],
+      "allowBackup": false
     },
     "extra": {
       "eas": {
